@@ -1,0 +1,14 @@
+name: "Example Workflow"
+on: [push]
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Composite Action
+        uses: ./.github/actions/my-composite-action
+        with:
+          message: "GitHub Actions!"

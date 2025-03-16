@@ -1,0 +1,19 @@
+name: "My Composite Action"
+description: "A simple composite action"
+inputs:
+  message:
+    description: "Message to print"
+    required: true
+outputs:
+  result:
+    description: "The result of the script"
+    value: ${{ steps.run-script.outputs.result }}
+runs:
+  using: "composite"
+  steps:
+    - name: Run script
+      id: run-script
+      run: |
+        echo "Running script..."
+        echo "Result=Hello, ${{ inputs.message }}!" >> $GITHUB_ENV
+      shell: bash
